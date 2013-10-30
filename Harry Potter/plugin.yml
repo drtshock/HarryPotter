@@ -1,0 +1,11 @@
+name: HarryPotter
+version: 1.0
+author: iiHeroo
+main: horrgs.me.org.harrypotter
+website: http://www.horrgs.webs.com/
+description: Brings a full on Harry Potter experience to your server.
+commands:
+ hp:
+  description: Harry Potter default command.
+  alias: [HarryPotter, Harry_Potter, HPotter, HarryP]
+  
