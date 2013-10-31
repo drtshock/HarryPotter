@@ -37,7 +37,12 @@ public class HPCommands implements CommandExecutor {
 	}
 	
 	private void SpellsList1(CommandSender sender) {
+		sender.sendMessage(ChatColor.DARK_AQUA + "[" + ChatColor.GOLD + "-" + ChatColor.DARK_AQUA + "]" + ChatColor.BLUE + "------------------" + ChatColor.DARK_AQUA + "[" + ChatColor.GOLD + "Harry Potter" + ChatColor.DARK_AQUA + "]" + ChatColor.BLUE + "------------------" + ChatColor.DARK_AQUA + "[" + ChatColor.GOLD + "-" + ChatColor.DARK_AQUA + "]");
 		sender.sendMessage(ChatColor.GREEN + "Avada Kedavra");
 		sender.sendMessage(ChatColor.GREEN + "Stupefy");
+		sender.sendMessage(ChatColor.GREEN + "Lumos");
+		sender.sendMessage(ChatColor.GREEN + "Wingardium Leviosa");
+		sender.sendMessage(ChatColor.GREEN + "Protego");
+		sender.sendMessage(ChatColor.DARK_AQUA + "[" + ChatColor.GOLD + "-" + ChatColor.DARK_AQUA + "]" + ChatColor.BLUE + "------------------" + ChatColor.DARK_AQUA + "[" + ChatColor.GOLD + "Harry Potter" + ChatColor.DARK_AQUA + "]" + ChatColor.BLUE + "------------------" + ChatColor.DARK_AQUA + "[" + ChatColor.GOLD + "-" + ChatColor.DARK_AQUA + "]");
 	}
 }
