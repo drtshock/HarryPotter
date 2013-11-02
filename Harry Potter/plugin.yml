@@ -7,5 +7,5 @@ description: Brings a full on Harry Potter experience to your server.
 commands:
  hp:
   description: Harry Potter default command.
-  alias: [HarryPotter, Harry_Potter, HPotter, HarryP]
+  alias: [harrypotter, harry_potter, hpotter, harryp]
   
