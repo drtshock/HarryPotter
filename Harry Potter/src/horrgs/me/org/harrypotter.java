@@ -18,8 +18,9 @@ public class harrypotter extends JavaPlugin {
 	public void onEnable() {
 		config = getConfig();
 		saveDefaultConfig();
-		getCommand("hp").setExecutor(new HPCommands());
+		getCommand("hp").setExecutor(new HPCommands(null));
 		System.out.println("[HarryPotter] Harry Potter plugin v0.1 being enabled.");
+		HPCommands second = new HPCommands(this);
 	}
 	
 	@Override

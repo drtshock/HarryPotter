@@ -1,6 +1,8 @@
 package horrgs.me.org.commands;
 
 
+import horrgs.me.org.harrypotter;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -12,6 +14,11 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class HPCommands implements CommandExecutor {
+	
+	harrypotter plugin;
+	public HPCommands(harrypotter plugin) {
+		this.plugin = plugin;
+	}
 	
 	
 	
@@ -75,22 +82,7 @@ public class HPCommands implements CommandExecutor {
 					}
 				}
 			}
-			if(args.length == 2) {
-				//TODO Fix this command, currently broke.
-				if(args[0].equalsIgnoreCase("wand")) {
-					if(sender.hasPermission("harrypotter.wand.others")) {
-						if(Bukkit.getPlayerExact(args[2]) != null) {
-							ItemStack PowerfulWand1 = new ItemStack(Material.STICK,1);
-							Bukkit.getPlayerExact(args[2]).getInventory().addItem(PowerfulWand1);
-						} else {
-							Invalid(sender);
-							
-						}
-					} else {
-						NoErrorMSG(sender);
-					}
-				}
-			}
+			//Remove the broken command for temporarily.
 		
 		return false;
 	}
