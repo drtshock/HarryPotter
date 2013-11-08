@@ -82,7 +82,7 @@ public class HPCommands implements CommandExecutor {
 					}
 				}
 			}
-			//Remove the broken command for temporarily.
+			//Remove the broken command for now.
 		
 		return false;
 	}
