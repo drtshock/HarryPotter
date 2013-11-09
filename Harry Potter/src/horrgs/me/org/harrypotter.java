@@ -11,15 +11,19 @@ public class harrypotter extends JavaPlugin {
 	
 	public final Logger logger = Logger.getLogger("Minecraft");
 	public static harrypotter plugin;
-	private FileConfiguration config;
 	private FileConfiguration spells;
+	
+	@SuppressWarnings("unused")
+	private FileConfiguration config;
 	
 	@Override
 	public void onEnable() {
 		config = getConfig();
 		saveDefaultConfig();
-		getCommand("hp").setExecutor(new HPCommands(null));
 		System.out.println("[HarryPotter] Harry Potter plugin v0.1 being enabled.");
+		getCommand("hp").setExecutor(new HPCommands(null));
+		
+		@SuppressWarnings("unused")
 		HPCommands second = new HPCommands(this);
 	}
 	
