@@ -21,8 +21,12 @@ public class HPCommands implements CommandExecutor {
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
 		if(!(sender instanceof Player)) {
-			sender.sendMessage("You must be a wizard, witch, or a squib to execute a command.");
+			sender.sendMessage(ChatColor.DARK_AQUA + "[" + ChatColor.GOLD + "Harry Potter" + ChatColor.DARK_AQUA + "]" + ChatColor.RED + " You must be a wizard, witch, or a squib to execute a command.");
 		}
+		if(args.length < 1) {
+			Args(sender);
+		}
+		
 		
 			if(args.length == 1) {
 				if(args[0].equalsIgnoreCase("help")) {
@@ -136,4 +140,10 @@ public class HPCommands implements CommandExecutor {
 	private void Invalid(CommandSender sender) {
 		sender.sendMessage(ChatColor.DARK_AQUA + "[" + ChatColor.GOLD + "Harry Potter" + ChatColor.DARK_AQUA + "]" + ChatColor.AQUA + " Player can't be found.");
 	}
+	private void Args(CommandSender sender) {
+		sender.sendMessage(ChatColor.DARK_AQUA + "[" + ChatColor.GOLD + "-" + ChatColor.DARK_AQUA + "]" + ChatColor.BLUE + "------------------" + ChatColor.DARK_AQUA + "[" + ChatColor.GOLD + "Harry Potter" + ChatColor.DARK_AQUA + "]" + ChatColor.BLUE + "------------------" + ChatColor.DARK_AQUA + "[" + ChatColor.GOLD + "-" + ChatColor.DARK_AQUA + "]");
+		sender.sendMessage(ChatColor.RED + "[WARNING] " + ChatColor.AQUA + "Invalid arguments! For a list of commands please do /hp help");
+		sender.sendMessage(ChatColor.DARK_AQUA + "[" + ChatColor.GOLD + "-" + ChatColor.DARK_AQUA + "]" + ChatColor.BLUE + "------------------" + ChatColor.DARK_AQUA + "[" + ChatColor.GOLD + "Harry Potter" + ChatColor.DARK_AQUA + "]" + ChatColor.BLUE + "------------------" + ChatColor.DARK_AQUA + "[" + ChatColor.GOLD + "-" + ChatColor.DARK_AQUA + "]");
+	}
+	
 }
