@@ -11,7 +11,6 @@ public class harrypotter extends JavaPlugin {
 	
 	public final Logger logger = Logger.getLogger("Minecraft");
 	public static harrypotter plugin;
-	private FileConfiguration spells;
 	
 	@SuppressWarnings("unused")
 	private FileConfiguration config;
@@ -25,17 +24,11 @@ public class harrypotter extends JavaPlugin {
 		
 		@SuppressWarnings("unused")
 		HPCommands second = new HPCommands(this);
-	}
+		}
 	
 	@Override
 	public void onDisable() {
 		System.out.println("[HarryPotter] Harry Potter plugin v0.1 being disabled.");
 	}
 	
-	public FileConfiguration getSpellsConfig() {
-		return spells;
-	}
-	
-	
-
 }
