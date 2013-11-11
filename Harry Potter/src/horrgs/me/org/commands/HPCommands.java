@@ -5,10 +5,13 @@ import horrgs.me.org.harrypotter;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 public class HPCommands implements CommandExecutor {
 	
@@ -20,6 +23,7 @@ public class HPCommands implements CommandExecutor {
 	
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
+		Player player = (Player) sender;
 		if(!(sender instanceof Player)) {
 			sender.sendMessage(ChatColor.DARK_AQUA + "[" + ChatColor.GOLD + "Harry Potter" + ChatColor.DARK_AQUA + "]" + ChatColor.RED + " You must be a wizard, witch, or a squib to execute a command.");
 		}
@@ -45,15 +49,6 @@ public class HPCommands implements CommandExecutor {
 					} else {
 						NoErrorMSG(sender);
 						System.out.println("[HarryPotter]" + " Player " + sender.getName() + " tried to run command /hp spells");
-					}
-				}
-				if(args[0].equalsIgnoreCase("wand")) {
-					if(sender.hasPermission("harrypotter.wand")) {
-						System.out.println("[HarryPotter]" + " Player " + sender.getName() + " ran command /hp wand successfully");
-						return true;
-						} else {
-							NoErrorMSG(sender);
-							System.out.println("[HarryPotter]" + " Player" + sender.getName() + " tried to run command /hp wand");
 					}
 				}
 				
@@ -90,14 +85,40 @@ public class HPCommands implements CommandExecutor {
 						    sender.sendMessage(ChatColor.GOLD + "Year: " + ChatColor.GREEN);
 						    sender.sendMessage(ChatColor.DARK_AQUA + "[" + ChatColor.GOLD + "-" + ChatColor.DARK_AQUA + "]" + ChatColor.BLUE + "------------------" + ChatColor.DARK_AQUA + "[" + ChatColor.GOLD + "Harry Potter" + ChatColor.DARK_AQUA + "]" + ChatColor.BLUE + "------------------" + ChatColor.DARK_AQUA + "[" + ChatColor.GOLD + "-" + ChatColor.DARK_AQUA + "]");
 						} else {
-						    	Invalid(sender);
+						    	TgtNull(sender);
 						        System.out.println("[HarryPotter]" + " Player " + sender.getName() + " tried to run command /hp whois");
 						        System.out.println("with permission, but the player couldn't be found.");
 						    }
 						} else {
 							NoErrorMSG(sender);
-					        System.out.println("[HarryPotter]" + " Player " + sender.getName() + " tried to run command /hp whois ");
+					        System.out.println("[HarryPotter]" + " Player " + sender.getName() + " tried to run command /hp whois");
 						}
+				}
+				if(args[0].equalsIgnoreCase("wand")) {
+					if(sender.hasPermission("harrypotter.admin.wand")) {				        
+				        if(Bukkit.getPlayerExact(args[1]) != null) {
+							if(args[1].isEmpty()) {
+								//Start fix here.
+								ItemStack PwrWand = new ItemStack(Material.STICK, 1);
+								ItemMeta namePwrWand = PwrWand.getItemMeta();
+						        namePwrWand.setDisplayName("Elder Wand");
+						        PwrWand.setItemMeta(namePwrWand);
+						        player.getInventory().addItem(PwrWand);
+							    //End fix here.
+						        //Make it so if arguments 1 is empty, give it to the sender.
+							} else {
+								ItemStack PwrWand = new ItemStack(Material.STICK, 1);
+								ItemMeta namePwrWand = PwrWand.getItemMeta();
+						        namePwrWand.setDisplayName("Elder Wand2");
+						        PwrWand.setItemMeta(namePwrWand);
+						        player.getInventory().addItem(PwrWand);
+							}
+						} else {
+							sender.sendMessage("Hi");
+						}
+					} else {
+						NoErrorMSG(sender);
+					}
 				}
 			}
 		return false;
@@ -137,7 +158,7 @@ public class HPCommands implements CommandExecutor {
 		sender.sendMessage(ChatColor.DARK_AQUA + "[" + ChatColor.GOLD + "-" + ChatColor.DARK_AQUA + "]" + ChatColor.BLUE + "------------------" + ChatColor.DARK_AQUA + "[" + ChatColor.GOLD + "Harry Potter" + ChatColor.DARK_AQUA + "]" + ChatColor.BLUE + "------------------" + ChatColor.DARK_AQUA + "[" + ChatColor.GOLD + "-" + ChatColor.DARK_AQUA + "]");
 	}
 	
-	private void Invalid(CommandSender sender) {
+	private void TgtNull(CommandSender sender) {
 		sender.sendMessage(ChatColor.DARK_AQUA + "[" + ChatColor.GOLD + "Harry Potter" + ChatColor.DARK_AQUA + "]" + ChatColor.AQUA + " Player can't be found.");
 	}
 	private void Args(CommandSender sender) {
@@ -145,5 +166,8 @@ public class HPCommands implements CommandExecutor {
 		sender.sendMessage(ChatColor.RED + "[WARNING] " + ChatColor.AQUA + "Invalid arguments! For a list of commands please do /hp help");
 		sender.sendMessage(ChatColor.DARK_AQUA + "[" + ChatColor.GOLD + "-" + ChatColor.DARK_AQUA + "]" + ChatColor.BLUE + "------------------" + ChatColor.DARK_AQUA + "[" + ChatColor.GOLD + "Harry Potter" + ChatColor.DARK_AQUA + "]" + ChatColor.BLUE + "------------------" + ChatColor.DARK_AQUA + "[" + ChatColor.GOLD + "-" + ChatColor.DARK_AQUA + "]");
 	}
+	
+	
+	
 	
 }
