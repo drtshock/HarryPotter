@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class harrypotter extends JavaPlugin {
+public final class harrypotter extends JavaPlugin {
 	
 	public final Logger logger = Logger.getLogger("Minecraft");
 	public static harrypotter plugin;
