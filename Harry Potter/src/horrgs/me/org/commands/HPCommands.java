@@ -24,9 +24,7 @@ public class HPCommands implements CommandExecutor {
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
 		Player player = (Player) sender;
-		if(!(sender instanceof Player)) {
-			sender.sendMessage(ChatColor.DARK_AQUA + "[" + ChatColor.GOLD + "Harry Potter" + ChatColor.DARK_AQUA + "]" + ChatColor.RED + " You must be a wizard, witch, or a squib to execute a command.");
-		}
+		
 		if(args.length < 1) {
 			Args(sender);
 		}
@@ -74,6 +72,24 @@ public class HPCommands implements CommandExecutor {
 						System.out.println("[HarryPotter]" + "Player " + sender.getName() + " tried to run command /hp teach");
 					}
 				}
+				if(args[0].equalsIgnoreCase("wand")) {
+					if(sender.hasPermission("harrypotter.admin.wand")) {
+						ItemStack PwrWand = new ItemStack(Material.STICK, 1);
+						ItemMeta namePwrWand = PwrWand.getItemMeta();
+				        namePwrWand.setDisplayName("Elder Wand");
+				        PwrWand.setItemMeta(namePwrWand);
+				        player.getInventory().addItem(PwrWand);
+					} else {
+						NoErrorMSG(sender);
+					}
+				}
+				if(args[0].equalsIgnoreCase("whois")) {
+					if(sender.hasPermission("harrypotter.admin.whois")) {
+						Args(sender);
+					} else {
+						NoErrorMSG(sender);
+					}
+				}
 			}
 			if(args.length == 2) {
 				if(args[0].equalsIgnoreCase("whois")) {
@@ -95,26 +111,17 @@ public class HPCommands implements CommandExecutor {
 						}
 				}
 				if(args[0].equalsIgnoreCase("wand")) {
-					if(sender.hasPermission("harrypotter.admin.wand")) {				        
-				        if(Bukkit.getPlayerExact(args[1]) != null) {
-							if(args[1].isEmpty()) {
-								//Start fix here.
-								ItemStack PwrWand = new ItemStack(Material.STICK, 1);
-								ItemMeta namePwrWand = PwrWand.getItemMeta();
-						        namePwrWand.setDisplayName("Elder Wand");
-						        PwrWand.setItemMeta(namePwrWand);
-						        player.getInventory().addItem(PwrWand);
-							    //End fix here.
-						        //Make it so if arguments 1 is empty, give it to the sender.
+					if(sender.hasPermission("harrypottter.admin.wand")) {
+						if(Bukkit.getPlayerExact(args[1]) != null) {
+							ItemStack PwrWand = new ItemStack(Material.STICK, 1);
+							ItemMeta namePwrWand = PwrWand.getItemMeta();
+					        namePwrWand.setDisplayName("Elder Wand");
+					        PwrWand.setItemMeta(namePwrWand);
+					        player.getInventory().addItem(PwrWand);
+					        return true;
 							} else {
-								ItemStack PwrWand = new ItemStack(Material.STICK, 1);
-								ItemMeta namePwrWand = PwrWand.getItemMeta();
-						        namePwrWand.setDisplayName("Elder Wand2");
-						        PwrWand.setItemMeta(namePwrWand);
-						        player.getInventory().addItem(PwrWand);
-							}
-						} else {
-							sender.sendMessage("Hi");
+								TgtNull(sender);
+								return true;
 						}
 					} else {
 						NoErrorMSG(sender);
@@ -132,6 +139,8 @@ public class HPCommands implements CommandExecutor {
 		sender.sendMessage(ChatColor.GOLD + "/hp unteach [player]" + ChatColor.GRAY + " - " + ChatColor.GREEN + "Unteaches a spell from a player.");
 		sender.sendMessage(ChatColor.GOLD + "/hp version" + ChatColor.GRAY + " - " + ChatColor.GREEN + "Tell's you the version of the plugin.");
 		sender.sendMessage(ChatColor.GOLD + "/hp buy <spell> [player]" + ChatColor.GRAY + ChatColor.GREEN + "Buy a spell for yourself or a player.");
+		sender.sendMessage(ChatColor.GOLD + "/hp whois <player>" + ChatColor.GRAY + " - " + ChatColor.GREEN + "Tell's HarryPotter related info about the player.");
+		sender.sendMessage(ChatColor.GOLD + "/hp wand [player]" + ChatColor.GRAY + " - " + ChatColor.GREEN +  "Gives the selected player the Elder Wand");
 		sender.sendMessage(ChatColor.DARK_AQUA + "[" + ChatColor.GOLD + "-" + ChatColor.DARK_AQUA + "]" + ChatColor.BLUE + "------------------" + ChatColor.DARK_AQUA + "[" + ChatColor.GOLD + "Harry Potter" + ChatColor.DARK_AQUA + "]" + ChatColor.BLUE + "------------------" + ChatColor.DARK_AQUA + "[" + ChatColor.GOLD + "-" + ChatColor.DARK_AQUA + "]");
 	}
 	
