@@ -1,5 +1,5 @@
 name: HarryPotter
-version: 1.0
+version: ${project.version}
 author: iiHeroo
 main: horrgs.me.org.harrypotter
 website: http://www.horrgs.webs.com/
